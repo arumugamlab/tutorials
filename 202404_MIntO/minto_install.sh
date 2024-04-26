@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+cd $HOME
+
+# Get MIntO
+
+git clone --depth 1 https://github.com/microbiomix/MIntO.git
+
+# Create MIntO conda env
+
+conda config --set channel_priority strict
+conda create --yes -n MIntO mamba snakemake=7 -c conda-forge -c bioconda
+source activate MIntO
+export MINTO_DIR="$HOME/MIntO"
+cd $MINTO_DIR
+
+# Create conda envs
+
+cat >> $HOME/MIntO/smk/precreate_envs.smk <<__EOM__
+import os
+my_envs = ['MIntO_base.yml', 'avamb.yml', 'mags.yml', 'checkm2.yml', 'gene_annotation.yml', 'r_pkgs.yml']
+rule make_all_envs:
+    input:
+        expand("created-{name}", name=my_envs)
+for env_file in my_envs:
+    rule:
+        output:
+            temp("created-%s" % env_file)
+        conda:
+            config["minto_dir"]+"/envs/%s" % env_file
+        shell:
+            "touch {output}"
+__EOM__
+snakemake --use-conda --conda-prefix $MINTO_DIR/conda_env --config minto_dir=$MINTO_DIR --cores 4 -s $HOME/MIntO/smk/precreate_envs.smk
+mamba clean --tarballs --yes
+
+# Set up minimal database downloads
+
+sed -i -e "s|minto_dir: /mypath/MIntO|minto_dir: $HOME/MIntO|" $MINTO_DIR/configuration/dependencies.yaml
+cat >> $MINTO_DIR/configuration/dependencies.yaml <<__EOM__
+enable_GTDB: no
+enable_phylophlan: no
+enable_metaphlan: no
+enable_motus: no
+__EOM__
+
+# Download databases
+
+snakemake --use-conda --restart-times 1 --keep-going --latency-wait 60 --cores 14 --resources mem=50 --jobs 4 --shadow-prefix="./.snakemake" --conda-prefix $MINTO_DIR/conda_env --snakefile $MINTO_DIR/smk/dependencies.smk --configfile $MINTO_DIR/configuration/dependencies.yaml -U checkm2_db Kofam_db functional_db_descriptions KEGG_maps download_fetchMGs
+
+
+# Download Tutorial data
+
+mkdir -p $HOME/tutorial/metaG
+cd $HOME/tutorial/metaG
+
+# Get tarball, extract metaG and delete tarball
+
+wget --no-check-certificate https://arumugamlab.sund.ku.dk/Tutorials/202404_MIntO_Tutorial/4-hostfree.tar.gz
+tar xfz 4-hostfree.tar.gz
+#rm 4-hostfree.tar.gz
