@@ -16,7 +16,7 @@ cd $MINTO_DIR
 
 # Create conda envs
 
-cat >> $HOME/MIntO/smk/precreate_envs.smk <<__EOM__
+cat >> $MINTO_DIR/smk/precreate_envs.smk <<__EOM__
 import os
 my_envs = ['MIntO_base.yml', 'avamb.yml', 'mags.yml', 'checkm2.yml', 'gene_annotation.yml', 'r_pkgs.yml']
 rule make_all_envs:
@@ -31,12 +31,16 @@ for env_file in my_envs:
         shell:
             "touch {output}"
 __EOM__
-snakemake --use-conda --conda-prefix $MINTO_DIR/conda_env --config minto_dir=$MINTO_DIR --cores 4 -s $HOME/MIntO/smk/precreate_envs.smk
+snakemake --use-conda --conda-prefix $MINTO_DIR/conda_env --config minto_dir=$MINTO_DIR --cores 4 -s $MINTO_DIR/smk/precreate_envs.smk
 mamba clean --tarballs --yes
+
+# Patch assembly to avoid indexing contig files
+
+sed -i "s/\.len//" $MINTO_DIR/smk/assembly.smk
 
 # Set up minimal database downloads
 
-sed -i -e "s|minto_dir: /mypath/MIntO|minto_dir: $HOME/MIntO|" $MINTO_DIR/configuration/dependencies.yaml
+sed -i -e "s|minto_dir: /mypath/MIntO|minto_dir: $MINTO_DIR|" $MINTO_DIR/configuration/dependencies.yaml
 cat >> $MINTO_DIR/configuration/dependencies.yaml <<__EOM__
 enable_GTDB: no
 enable_phylophlan: no
@@ -56,6 +60,6 @@ cd $HOME/tutorial/metaG
 
 # Get tarball, extract metaG and delete tarball
 
-wget --no-check-certificate https://arumugamlab.sund.ku.dk/Tutorials/202404_MIntO_Tutorial/4-hostfree.tar.gz
-tar xfz 4-hostfree.tar.gz
-#rm 4-hostfree.tar.gz
+wget --no-check-certificate https://arumugamlab.sund.ku.dk/Tutorials/202404_MIntO_Tutorial/tutorial_data.tar.gz
+tar xfz tutorial_data.tar.gz
+rm tutorial_data.tar.gz
