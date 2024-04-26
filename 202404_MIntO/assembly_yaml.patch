@@ -20,17 +20,21 @@
 ---
 > MEGAHIT_memory: 2
 > MEGAHIT_threads: 8
-84,86d83
+34d33
+<  - meta-sensitive
+84,86d82
 < EXCLUDE_ASSEMBLY_TYPES:
 <  - illumina_coas
-<
-90,91c87,88
+< 
+90,91c86,87
 < BWA_threads: 10
 < BWA_memory: 25
 ---
 > BWA_threads: 8
 > BWA_memory: 8
-98c95
+98c94
 < SAMTOOLS_sort_perthread_memgb: 10
 ---
 > SAMTOOLS_sort_perthread_memgb: 8
+167d162
+<   Full: CD136+CD138+CD140+CD142+CD146+CD237+CD238+CD240+CD242+CD244
