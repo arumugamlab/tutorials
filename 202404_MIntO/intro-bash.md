@@ -52,16 +52,16 @@ output:
 ```bash
 $ ls -lh
 total 560K
--rw-r--r--. 1 mjq180 users 7.3K Feb 27  2020 adaptors_BGI.fasta
--rw-r--r--. 1 mjq180 users 1.7K Feb 27  2020 adaptors.fasta
--rw-r--r--. 1 mjq180 users  149 Jul 22  2020 adaptors_NovoGene.fasta
--rw-r--r--. 1 mjq180 users  12K Apr 23 11:23 linux-markdown.html
--rw-r--r--. 1 mjq180 users 3.9K Apr 23 11:23 linux-markdown.md
--rw-r--r--. 1 mjq180 users  12K Aug 31  2022 msb-pkgs.txt
--rw-r--r--. 1 mjq180 users 5.7K Mar 20  2023 pubmed2wikipedia.xsl
--rw-r--r--. 1 mjq180 users  179 Mar 17  2023 qhold.sbatch
-drwxr-xr-x. 3 mjq180 users   45 Sep 13  2022 R
--rw-r--r--. 1 mjq180 users  591 Nov  1  2022 README.jupyter
+-rw-r--r--. 1 ucdavis users 7.3K Feb 27  2020 adaptors_BGI.fasta
+-rw-r--r--. 1 ucdavis users 1.7K Feb 27  2020 adaptors.fasta
+-rw-r--r--. 1 ucdavis users  149 Jul 22  2020 adaptors_NovoGene.fasta
+-rw-r--r--. 1 ucdavis users  12K Apr 23 11:23 linux-markdown.html
+-rw-r--r--. 1 ucdavis users 3.9K Apr 23 11:23 linux-markdown.md
+-rw-r--r--. 1 ucdavis users  12K Aug 31  2022 msb-pkgs.txt
+-rw-r--r--. 1 ucdavis users 5.7K Mar 20  2023 pubmed2wikipedia.xsl
+-rw-r--r--. 1 ucdavis users  179 Mar 17  2023 qhold.sbatch
+drwxr-xr-x. 3 ucdavis users   45 Sep 13  2022 R
+-rw-r--r--. 1 ucdavis users  591 Nov  1  2022 README.jupyter
 $
 ```
 ---
@@ -99,7 +99,7 @@ total 0
 $ touch example.txt
 $ ls -lh
 total 0
--rw-r--r--. 1 mjq180 users 0 Apr 23 11:30 example.txt
+-rw-r--r--. 1 ucdavis users 0 Apr 23 11:30 example.txt
 $ 
 ```
 ---
@@ -112,8 +112,8 @@ $
 $ cp example.txt backup.txt
 $ ls -lh
 total 0
--rw-r--r--. 1 mjq180 users 0 Apr 23 11:31 backup.txt
--rw-r--r--. 1 mjq180 users 0 Apr 23 11:30 example.txt
+-rw-r--r--. 1 ucdavis users 0 Apr 23 11:31 backup.txt
+-rw-r--r--. 1 ucdavis users 0 Apr 23 11:30 example.txt
 $
 ```
 Note the timestamp for `backup.txt`.
@@ -128,8 +128,8 @@ Note the timestamp for `backup.txt`.
 $ mv example.txt new_name.txt
 $ ls -lh
 total 0
--rw-r--r--. 1 mjq180 users 0 Apr 23 11:31 backup.txt
--rw-r--r--. 1 mjq180 users 0 Apr 23 11:30 new_name.txt
+-rw-r--r--. 1 ucdavis users 0 Apr 23 11:31 backup.txt
+-rw-r--r--. 1 ucdavis users 0 Apr 23 11:30 new_name.txt
 $
 ```
 Note the timestamp for `new_name.txt`
@@ -144,7 +144,7 @@ Note the timestamp for `new_name.txt`
 $ rm backup.txt
 $ ls -lh
 total 0
--rw-r--r--. 1 mjq180 users 0 Apr 23 11:30 new_name.txt
+-rw-r--r--. 1 ucdavis users 0 Apr 23 11:30 new_name.txt
 $
 ```
 
