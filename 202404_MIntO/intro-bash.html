@@ -539,8 +539,7 @@ bioinformatics tasks.</li>
 <li>Introduction to Linux</li>
 <li>Understanding the Bash Shell</li>
 <li>Basic Bash Commands</li>
-<li>Useful Tools and Commands for Bioinformatics</li>
-<li>Practical Examples and Exercises</li>
+<li>Connecting to servers and transferring files</li>
 </ul></li>
 </ul>
 </div>
@@ -622,11 +621,6 @@ software.</li>
 <li><strong>Tips:</strong> Understand absolute vs. relative paths.</li>
 </ul>
 </div>
-<div class="slide section level1">
-
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
-</div>
 <div id="file-management" class="slide section level1">
 <h1>7 File Management</h1>
 <ul>
@@ -634,8 +628,8 @@ software.</li>
 <ul>
 <li>In the beginning, there was nothing …</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span></code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span></code></pre></div></li>
 </ul>
 </div>
 <div id="file-management-1" class="slide section level1">
@@ -645,24 +639,28 @@ software.</li>
 <ul>
 <li><code>touch</code> — Create a new file.</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch example.txt</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 example.txt</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> </span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch example.txt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 example.txt</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> </span></code></pre></div>
 <hr /></li>
 </ul>
 </div>
 <div id="file-management-2" class="slide section level1">
 <h1>9 File Management</h1>
 <ul>
-<li><strong>Creating and Editing Files:</strong>
+<li><strong>Copying, Moving, Deleting:</strong>
 <ul>
-<li><code>nano</code>, <code>vim</code> — Edit files in terminal.
-Example: <code>nano example.txt</code></li>
+<li><code>cp</code> — Copy files.</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp example.txt backup.txt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:31 backup.txt</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 example.txt</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
+Note the timestamp for <code>backup.txt</code>.</li>
 </ul>
 </div>
 <div id="file-management-3" class="slide section level1">
@@ -670,15 +668,15 @@ Example: <code>nano example.txt</code></li>
 <ul>
 <li><strong>Copying, Moving, Deleting:</strong>
 <ul>
-<li><code>cp</code> — Copy files.</li>
+<li><code>mv</code> — Move or rename files.</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp example.txt backup.txt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:31 backup.txt</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 example.txt</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
-Note the timestamp for <code>backup.txt</code>.</li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv example.txt new_name.txt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:31 backup.txt</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 new_name.txt</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
+Note the timestamp for <code>new_name.txt</code></li>
 </ul>
 </div>
 <div id="file-management-4" class="slide section level1">
@@ -686,33 +684,17 @@ Note the timestamp for <code>backup.txt</code>.</li>
 <ul>
 <li><strong>Copying, Moving, Deleting:</strong>
 <ul>
-<li><code>mv</code> — Move or rename files.</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv example.txt new_name.txt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:31 backup.txt</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 new_name.txt</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
-Note the timestamp for <code>new_name.txt</code></li>
-</ul>
-</div>
-<div id="file-management-5" class="slide section level1">
-<h1>12 File Management</h1>
-<ul>
-<li><strong>Copying, Moving, Deleting:</strong>
-<ul>
 <li><code>rm</code> — Remove files.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm backup.txt</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 new_name.txt</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm backup.txt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 0</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--.</span> 1 mjq180 users 0 Apr 23 11:30 new_name.txt</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div></li>
 </ul>
 </div>
 <div id="viewing-and-managing-file-content" class="slide section level1">
-<h1>13 Viewing and Managing File Content</h1>
+<h1>12 Viewing and Managing File Content</h1>
 <ul>
 <li><strong>Commands:</strong>
 <ul>
@@ -731,7 +713,7 @@ Note the timestamp for <code>new_name.txt</code></li>
 </ul>
 </div>
 <div id="useful-commands-for-file-data-manipulation" class="slide section level1">
-<h1>14 Useful Commands for File Data Manipulation</h1>
+<h1>13 Useful Commands for File Data Manipulation</h1>
 <ul>
 <li><strong>Sorting, Joining, and Counting:</strong>
 <ul>
@@ -754,12 +736,12 @@ text. Example: <code>sed &#39;s/old/new/g&#39; file.txt</code></li>
 </ul>
 </div>
 <div id="permissions-and-process-management" class="slide section level1">
-<h1>15 Permissions and Process Management</h1>
+<h1>14 Permissions and Process Management</h1>
 <ul>
 <li><strong>Understanding Permissions:</strong>
 <ul>
 <li><code>chmod</code> — Modify file permissions. Example:
-<code>chmod 755 script.sh</code></li>
+<code>chmod u+rwx script.sh</code></li>
 <li><code>chown</code> — Change file owner and group. Example:
 <code>chown user:group file.txt</code></li>
 </ul></li>
@@ -767,56 +749,70 @@ text. Example: <code>sed &#39;s/old/new/g&#39; file.txt</code></li>
 <ul>
 <li><code>top</code> — Display Linux processes. Example:
 <code>top</code></li>
-<li><code>ps</code> — Report a snapshot of current processes. Example:
-<code>ps -aux</code></li>
-<li><code>kill</code> — Send a signal to a process. Example:
-<code>kill -9 1234</code></li>
 </ul></li>
 </ul>
 </div>
 <div id="bash-scripting-basics" class="slide section level1">
-<h1>16 Bash Scripting Basics</h1>
+<h1>15 Bash Scripting Basics</h1>
 <ul>
 <li><strong>Creating a Bash Script:</strong>
 <ul>
 <li>Basic script structure and syntax. Example: Script to list files and
 counts words.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Listing files...&quot;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Counting words in text file...&quot;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-w</span> sample.txt</span></code></pre></div></li>
-<li><strong>Useful Scripts for Bioinformatics:</strong>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Listing files...&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Counting words in text file...&quot;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-w</span> sample.txt</span></code></pre></div>
 <ul>
-<li>Examples like automating file manipulation tasks.</li>
+<li>You can use bash <em>variables</em> for storing text, numbers,
+etc.</li>
+</ul></li>
+</ul>
+<pre><code>$ A=1
+$ echo $A
+1
+$ my_text=&quot;hello world!&quot;
+$ echo $my_text
+hello world!
+$</code></pre>
+</div>
+<div id="connecting-to-your-dedicated-servers-for-this-workshop" class="slide section level1">
+<h1>16 Connecting to your dedicated servers for this workshop</h1>
+<ul>
+<li><strong>Find your server’s IP address</strong>
+<ul>
+<li>Visit the spreadsheet <a href>here</a></li>
+<li>Find the IP address for your group</li>
+</ul></li>
+<li><strong>Connect to your server</strong>
+<ul>
+<li>Go to your terminal</li>
+<li>Connect as follows:</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh user@192.168.1.1</span></code></pre></div>
+<ul>
+<li>Enter password</li>
+<li>Now you are in the remote server</li>
 </ul></li>
 </ul>
 </div>
-<div id="practical-examples" class="slide section level1">
-<h1>17 Practical Examples</h1>
+<div id="remote-file-management" class="slide section level1">
+<h1>17 Remote file Management</h1>
 <ul>
-<li><strong>Example 1:</strong> Automating sequence data
-processing.</li>
-<li><strong>Example 2:</strong> Batch processing of image files from
-microscopy.</li>
+<li><strong>Copying from and to a server:</strong>
+<ul>
+<li><code>scp</code> — Secure copy files over SSH.</li>
 </ul>
-</div>
-<div id="resources-and-further-reading" class="slide section level1">
-<h1>18 Resources and Further Reading</h1>
-<ul>
-<li><strong>Books, Online Courses, and Websites:</strong>
-<ul>
-<li>Recommended resources for deeper learning.</li>
-</ul></li>
-<li><strong>Community and Support:</strong>
-<ul>
-<li>Forums and communities for ongoing support.</li>
-</ul></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp example.txt user@server.com:/home/user/</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp user@server.com:/home/user/example.txt .</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
+<hr /></li>
 </ul>
 </div>
 <div id="qa" class="slide section level1">
-<h1>19 Q&amp;A</h1>
+<h1>18 Q&amp;A</h1>
 <ul>
 <li><strong>Any questions or clarifications?</strong></li>
 </ul>

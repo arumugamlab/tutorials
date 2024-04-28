@@ -16,8 +16,7 @@ output:
   - Introduction to Linux
   - Understanding the Bash Shell
   - Basic Bash Commands
-  - Useful Tools and Commands for Bioinformatics
-  - Practical Examples and Exercises
+  - Connecting to servers and transferring files
 
 ---
 
@@ -81,12 +80,6 @@ $
 
 ---
 
-```bash
-$ 
-$
-```
----
-
 # File Management
 
 - **Creating and Editing Files:**
@@ -109,17 +102,6 @@ total 0
 -rw-r--r--. 1 mjq180 users 0 Apr 23 11:30 example.txt
 $ 
 ```
----
-
-# File Management
-
-- **Creating and Editing Files:**
-  - `nano`, `vim` — Edit files in terminal. Example: `nano example.txt`
-```bash
-$ 
-$
-```
-
 ---
 
 # File Management
@@ -192,12 +174,10 @@ $
 
 # Permissions and Process Management
 - **Understanding Permissions:**
-  - `chmod` — Modify file permissions. Example: `chmod 755 script.sh`
+  - `chmod` — Modify file permissions. Example: `chmod u+rwx script.sh`
   - `chown` — Change file owner and group. Example: `chown user:group file.txt`
 - **Managing Processes:**
   - `top` — Display Linux processes. Example: `top`
-  - `ps` — Report a snapshot of current processes. Example: `ps -aux`
-  - `kill` — Send a signal to a process. Example: `kill -9 1234`
 
 ---
 
@@ -211,24 +191,45 @@ ls
 echo "Counting words in text file..."
 wc -w sample.txt
 ```
-- **Useful Scripts for Bioinformatics:**
-  - Examples like automating file manipulation tasks.
+  - You can use bash *variables* for storing text, numbers, etc.
+
+```
+$ A=1
+$ echo $A
+1
+$ my_text="hello world!"
+$ echo $my_text
+hello world!
+$
+```
+---
+
+# Connecting to your dedicated servers for this workshop
+- **Find your server's IP address**
+  - Visit the spreadsheet [here]()
+  - Find the IP address for your group
+- **Connect to your server**
+  - Go to your terminal
+  - Connect as follows:
+  ```bash
+  $ ssh user@192.168.1.1
+  ```
+  - Enter password
+  - Now you are in the remote server
 
 ---
 
-# Practical Examples
-- **Example 1:** Automating sequence data processing.
-- **Example 2:** Batch processing of image files from microscopy.
+# Remote file Management
 
+- **Copying from and to a server:**
+  - `scp` — Secure copy files over SSH.
+```bash
+$ scp example.txt user@server.com:/home/user/
+$ scp user@server.com:/home/user/example.txt .
+$
+```
 ---
 
-# Resources and Further Reading
-- **Books, Online Courses, and Websites:**
-  - Recommended resources for deeper learning.
-- **Community and Support:**
-  - Forums and communities for ongoing support.
-
----
 
 # Q&A
 - **Any questions or clarifications?**
