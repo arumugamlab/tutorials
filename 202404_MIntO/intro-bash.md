@@ -41,7 +41,7 @@ output:
   - `pwd` — Print working directory.
   ```bash
   $ pwd
-  /home/mjq180
+  /home/ucdavis
   $
   ```
 ---
