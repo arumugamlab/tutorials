@@ -10,7 +10,7 @@ git clone --depth 1 https://github.com/microbiomix/MIntO.git
 
 conda config --set channel_priority strict
 conda create --yes -n MIntO mamba snakemake=7 -c conda-forge -c bioconda
-source activate MIntO
+conda activate MIntO
 export MINTO_DIR="$HOME/MIntO"
 cd $MINTO_DIR
 
@@ -61,6 +61,6 @@ cd $HOME/tutorial/metaG
 
 # Get tarball, extract and delete tarball
 
-wget --no-check-certificate https://arumugamlab.sund.ku.dk/Tutorials/202404_MIntO_Tutorial/tutorial_data.tar.bz2
+wget --no-check-certificate https://arumugamlab.sund.ku.dk/tutorials/202404_MIntO/tutorial_data.tar.bz2
 tar xfj tutorial_data.tar.bz2
 rm tutorial_data.tar.bz2
