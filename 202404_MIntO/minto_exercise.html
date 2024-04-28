@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>PIG-PARADIGM Shotgun metagenomics workshop - Afternoon session</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="pig-paradigm-shotgun-metagenomics-workshop---afternoon-session">PIG-PARADIGM Shotgun metagenomics workshop - Afternoon session</h1>
+<h3 id="29042024">29.04.2024</h3>
+<p>We are going to run a pre-made pipeline, called <a href="https://github.com/arumugamlab/MIntO">MIntO</a>, to go from trimmed sequencing reads to fully annotated genomes.</p>
+<h2 id="setup-for-running-minto">Setup for running MIntO</h2>
+<p>Note: If you lose connection to the server and re-login, these following steps need to be repeated.</p>
+<p>Activate the pre-installed conda virtual environment and define some shell environment variables:</p>
+<pre><code class="language-bash"><span class="hljs-built_in">source</span> activate MIntO
+<span class="hljs-built_in">export</span> MINTO_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/MIntO&quot;</span>
+<span class="hljs-built_in">export</span> PROJ_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/tutorial&quot;</span>
+</code></pre>
+<p>Go to the folder where we already run some preparatory parts of MIntO:</p>
+<pre><code class="language-bash"><span class="hljs-built_in">cd</span> <span class="hljs-variable">$PROJ_DIR</span>
+<span class="hljs-built_in">cd</span> metaG
+</code></pre>
+<p>Look around in the folder! Note the structure of the directories.</p>
+<p>Next, define some Snakemake parameters, to use conda environments and limit resources:</p>
+<pre><code class="language-bash">SNAKE_PARAMS=<span class="hljs-string">&quot;--use-conda --restart-times 1 --keep-going --latency-wait 60 --jobs 10 --cores 16 --resources mem=58 --conda-prefix <span class="hljs-variable">$MINTO_DIR</span>/conda_env --shadow-prefix <span class="hljs-variable">$PWD</span>/.snakemake&quot;</span>
+</code></pre>
+<p>Copy metadata file from the MIntO repository's tutorial folder:</p>
+<pre><code class="language-bash"><span class="hljs-built_in">cp</span> <span class="hljs-variable">$MINTO_DIR</span>/tutorial/metadata/tutorial_metadata.txt .
+</code></pre>
+<h2 id="start-minto">Start MIntO</h2>
+<h3 id="run-assemblysmk">Run assembly.smk</h3>
+<pre><code class="language-bash">snakemake <span class="hljs-variable">$SNAKE_PARAMS</span> --snakefile <span class="hljs-variable">$MINTO_DIR</span>/smk/assembly.smk --configfile assembly.yaml
+</code></pre>
+<h3 id="run-binning_preparationsmk">Run binning_preparation.smk</h3>
+<pre><code class="language-bash">snakemake <span class="hljs-variable">$SNAKE_PARAMS</span> --snakefile <span class="hljs-variable">$MINTO_DIR</span>/smk/binning_preparation.smk --configfile assembly.yaml
+</code></pre>
+<h3 id="run-mags_generationsmk">Run mags_generation.smk</h3>
+<p>First, modify the configuration file, to switch off taxonomical annotation by the pipeline.</p>
+<pre><code class="language-bash">sed <span class="hljs-string">&quot;s/RUN_TAXONOMY: yes/RUN_TAXONOMY: no/&quot;</span> mags_generation.yaml | grep -v <span class="hljs-string">&quot;aae&quot;</span> &gt; mags_generation.yaml.fixed
+</code></pre>
+<p>Now, we can run the binning step:</p>
+<pre><code class="language-bash">snakemake <span class="hljs-variable">$SNAKE_PARAMS</span> --snakefile <span class="hljs-variable">$MINTO_DIR</span>/smk/mags_generation.smk --configfile mags_generation.yaml.fixed
+</code></pre>
+<h3 id="run-gene_annotationsmk">Run gene_annotation.smk</h3>
+<p>Like in the last step, we need to modify the standard configuration file for this step, mapping.yaml, to only do the annotation with KEGG:</p>
+<pre><code class="language-bash">sed -e <span class="hljs-string">&quot;s|/mypath|<span class="hljs-variable">$HOME</span>|; s|/IBD_tutorial|/tutorial|; s|dbCAN|KEGG|; s|BWA_threads: 10|BWA_threads: 8|; s|BWA_memory: 45|BWA_memory: 10|&quot;</span> <span class="hljs-variable">$MINTO_DIR</span>/configuration/mapping.yaml | grep -v eggNOG &gt; mapping.yaml
+
+</code></pre>
+<p>Thereafter, we can run gene_annotation.smk:</p>
+<pre><code class="language-bash">snakemake <span class="hljs-variable">$SNAKE_PARAMS</span> --snakefile <span class="hljs-variable">$MINTO_DIR</span>/smk/gene_annotation.smk --configfile mapping.yaml
+</code></pre>
+<p>Outputs will be created in <code>$PROJ_DIR/DB</code> folder</p>
+<h3 id="if-we-have-time-also-run-these">If we have time also run these</h3>
+<p>Run gene abundance estimation, using the MAGs:</p>
+<pre><code class="language-bash">snakemake <span class="hljs-variable">$SNAKE_PARAMS</span> --snakefile <span class="hljs-variable">$MINTO_DIR</span>/smk/gene_abundance.smk --configfile mapping.yaml
+</code></pre>
+<p>Collect outputs from the metagenomics data:</p>
+<pre><code class="language-bash"><span class="hljs-built_in">cd</span> <span class="hljs-variable">$PROJ_DIR</span>
+
+egrep -v <span class="hljs-string">&quot; (eggNOG|dbCAN|eCAMI|KEGG|PFAMs)&quot;</span> data_integration.yaml | sed <span class="hljs-string">&quot;s/metaG_metaT/metaG/&quot;</span> &gt; data_integration.yaml.fixed
+
+snakemake <span class="hljs-variable">$SNAKE_PARAMS</span> --snakefile <span class="hljs-variable">$MINTO_DIR</span>/smk/data_integration.smk --configfile data_integration.yaml.fixed
+</code></pre>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
