@@ -31,6 +31,7 @@ for env_file in my_envs:
         shell:
             "touch {output}"
 __EOM__
+
 snakemake --use-conda --conda-prefix $MINTO_DIR/conda_env --config minto_dir=$MINTO_DIR --cores 4 -s $MINTO_DIR/smk/precreate_envs.smk
 mamba clean --tarballs --yes
 
@@ -58,8 +59,8 @@ snakemake --use-conda --restart-times 1 --keep-going --latency-wait 60 --cores 1
 mkdir -p $HOME/tutorial/metaG
 cd $HOME/tutorial/metaG
 
-# Get tarball, extract metaG and delete tarball
+# Get tarball, extract and delete tarball
 
-wget --no-check-certificate https://arumugamlab.sund.ku.dk/Tutorials/202404_MIntO_Tutorial/tutorial_data.tar.gz
-tar xfz tutorial_data.tar.gz
-rm tutorial_data.tar.gz
+wget --no-check-certificate https://arumugamlab.sund.ku.dk/Tutorials/202404_MIntO_Tutorial/tutorial_data.tar.bz2
+tar xfj tutorial_data.tar.bz2
+rm tutorial_data.tar.bz2
