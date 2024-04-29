@@ -2,12 +2,13 @@
 title: "Introduction to Bash for Bioinformatics"
 author: "Mani Arumugam"
 date: "29/04/2024"
-output: 
-  slidy_presentation: 
-    number_sections: true
+output:
+  slidy_presentation:
+    number_sections: yes
     duration: 120
-    footer: "PIG-PARADIGM Workshop, 29.04.2024. &nbsp;&nbsp; Copyright (c) 2024, Arumugam Group. &nbsp;&nbsp;Free for non-commercial use."
-    #font_adjustment: -1
+    footer: "PIG-PARADIGM Workshop, 29.04.2024. &nbsp;&nbsp; Copyright (c) 2024, Arumugam
+      Group. &nbsp;&nbsp;Free for non-commercial use."
+  beamer_presentation: default
 ---
 
 # Overview
@@ -221,11 +222,26 @@ $
 
 # Remote file Management
 
-- **Copying from and to a server:**
+- **Copying from a server:**
   - `scp` — Secure copy files over SSH.
+  - Here is the **syntax** for using `scp` to receive files
+```
+scp user@server:/location/file local_file
+```
+  - Here is the **syntax** for using `scp` to send files
+```
+scp local_file user@server:/location/file
+```
+
+- **Copying from a server:**
 ```bash
-$ scp example.txt user@server.com:/home/user/
-$ scp user@server.com:/home/user/example.txt .
+$ scp ucdavis@192.168.1.1:/home/ucdavis/tutorial/metaG/assembly.yaml .
+$
+```
+
+- **Copying to a server:**
+```bash
+$ scp assembly.yaml ucdavis@192.168.1.1:/home/ucdavis/
 $
 ```
 ---

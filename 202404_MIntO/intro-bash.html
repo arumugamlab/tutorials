@@ -801,15 +801,27 @@ $</code></pre>
 <div id="remote-file-management" class="slide section level1">
 <h1>17 Remote file Management</h1>
 <ul>
-<li><strong>Copying from and to a server:</strong>
+<li><strong>Copying from a server:</strong>
 <ul>
 <li><code>scp</code> — Secure copy files over SSH.</li>
+<li>Here is the <strong>syntax</strong> for using <code>scp</code> to
+receive files</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp example.txt user@server.com:/home/user/</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp user@server.com:/home/user/example.txt .</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
-<hr /></li>
+<pre><code>scp user@server:/location/file local_file</code></pre>
+<ul>
+<li>Here is the <strong>syntax</strong> for using <code>scp</code> to
+send files</li>
 </ul>
+<pre><code>scp local_file user@server:/location/file</code></pre></li>
+<li><strong>Copying from a server:</strong></li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp ucdavis@192.168.1.1:/home/ucdavis/tutorial/metaG/assembly.yaml .</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
+<ul>
+<li><strong>Copying to a server:</strong></li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp assembly.yaml ucdavis@192.168.1.1:/home/ucdavis/</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
 </div>
 <div id="dna-sequence-data-file-formats" class="slide section level1">
 <h1>18 DNA Sequence Data File Formats</h1>
