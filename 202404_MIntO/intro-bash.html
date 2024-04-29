@@ -783,7 +783,7 @@ $</code></pre>
 <ul>
 <li><strong>Find your server’s IP address</strong>
 <ul>
-<li>Visit the spreadsheet <a href>here</a></li>
+<li>Visit the spreadsheet <a href="https://docs.google.com/spreadsheets/d/1jEyd7VNX-5IKzjZESfbvDgyYigiXteMv3oR2ArB8KW0/edit">here</a></li>
 <li>Find the IP address for your group</li>
 </ul></li>
 <li><strong>Connect to your server</strong>
@@ -811,8 +811,77 @@ $</code></pre>
 <hr /></li>
 </ul>
 </div>
+<div id="dna-sequence-data-file-formats" class="slide section level1">
+<h1>18 DNA Sequence Data File Formats</h1>
+<h2 id="understanding-fasta-and-fastq-formats">18.1 Understanding FASTA
+and FASTQ Formats</h2>
+<ul>
+<li>Essential for handling genomic data in bioinformatics
+workflows.</li>
+</ul>
+</div>
+<div id="introduction-to-the-fasta-format" class="slide section level1">
+<h1>19 Introduction to the FASTA Format</h1>
+<ul>
+<li><strong>What is FASTA?</strong>
+<ul>
+<li>A text-based format for nucleotide or peptide sequences.</li>
+<li>Each sequence in a FASTA file begins with a single-line description,
+followed by lines of sequence data.</li>
+</ul></li>
+<li><strong>FASTA Format Structure:</strong>
+<ul>
+<li>Description line starts with a <code>&gt;</code> symbol.</li>
+<li>Sequence lines follow the description; they can be of varying
+lengths.</li>
+</ul>
+<pre class="text"><code>&gt;seq1
+ATGCTAGCTAGCTACGATCGATCGATACGATC
+AGCTAGCTAGCTGATCGATCGTAGCTAGCTAG
+&gt;seq2
+GTCAGTCAGATCGATCGTAGCTAGCTACGATC</code></pre></li>
+<li><strong>Common Uses:</strong>
+<ul>
+<li>Storing gene sequences, scaffolds, or protein sequences.</li>
+<li>Frequently used in databases, sequence analysis, and alignment
+tools.</li>
+</ul></li>
+</ul>
+</div>
+<div id="introduction-to-the-fastq-format" class="slide section level1">
+<h1>20 Introduction to the FASTQ Format</h1>
+<ul>
+<li><strong>What is FASTQ?</strong>
+<ul>
+<li>A format similar to FASTA but includes sequencing quality
+scores.</li>
+<li>Used extensively in high-throughput sequencing (HTS).</li>
+</ul></li>
+<li><strong>FASTQ Format Structure:</strong>
+<ul>
+<li>Each sequence has four lines:</li>
+<li>A description line starting with <code>@</code>.</li>
+<li>The raw sequence letters.</li>
+<li>A line starting with <code>+</code> (optionally followed by the same
+sequence identifier and description).</li>
+<li>The quality score line (ASCII characters representing the quality
+scores for each nucleotide).</li>
+</ul></li>
+</ul>
+<pre><code>@seq1
+ATGCTAGCTAGCTACGATCGATCGATACGATC
++
+!&#39;&#39;*((((***+))%%%++)(%%%%).1***-+*&#39;&#39;))**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65</code></pre>
+<ul>
+<li><strong>Quality Scores:</strong>
+<ul>
+<li>Each character represents a quality score for the corresponding
+nucleotide, influencing the reliability of each base call.</li>
+</ul></li>
+</ul>
+</div>
 <div id="qa" class="slide section level1">
-<h1>18 Q&amp;A</h1>
+<h1>21 Q&amp;A</h1>
 <ul>
 <li><strong>Any questions or clarifications?</strong></li>
 </ul>

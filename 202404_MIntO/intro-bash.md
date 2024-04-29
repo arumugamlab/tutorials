@@ -206,7 +206,7 @@ $
 
 # Connecting to your dedicated servers for this workshop
 - **Find your server's IP address**
-  - Visit the spreadsheet [here]()
+  - Visit the spreadsheet [here](https://docs.google.com/spreadsheets/d/1jEyd7VNX-5IKzjZESfbvDgyYigiXteMv3oR2ArB8KW0/edit)
   - Find the IP address for your group
 - **Connect to your server**
   - Go to your terminal
@@ -230,6 +230,55 @@ $
 ```
 ---
 
+# DNA Sequence Data File Formats
+## Understanding FASTA and FASTQ Formats
+- Essential for handling genomic data in bioinformatics workflows.
+
+---
+
+# Introduction to the FASTA Format
+- **What is FASTA?**
+  - A text-based format for nucleotide or peptide sequences.
+  - Each sequence in a FASTA file begins with a single-line description, followed by lines of sequence data.
+- **FASTA Format Structure:**
+  - Description line starts with a `>` symbol.
+  - Sequence lines follow the description; they can be of varying lengths.
+```text
+>seq1
+ATGCTAGCTAGCTACGATCGATCGATACGATC
+AGCTAGCTAGCTGATCGATCGTAGCTAGCTAG
+>seq2
+GTCAGTCAGATCGATCGTAGCTAGCTACGATC
+```
+
+- **Common Uses:**
+  - Storing gene sequences, scaffolds, or protein sequences.
+  - Frequently used in databases, sequence analysis, and alignment tools.
+
+---
+
+# Introduction to the FASTQ Format
+- **What is FASTQ?**
+  - A format similar to FASTA but includes sequencing quality scores.
+  - Used extensively in high-throughput sequencing (HTS).
+- **FASTQ Format Structure:**
+  - Each sequence has four lines:
+  - A description line starting with `@`.
+  - The raw sequence letters.
+  - A line starting with `+` (optionally followed by the same sequence identifier and description).
+  - The quality score line (ASCII characters representing the quality scores for each nucleotide).
+  
+```
+@seq1
+ATGCTAGCTAGCTACGATCGATCGATACGATC
++
+!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
+```
+
+- **Quality Scores:**
+  - Each character represents a quality score for the corresponding nucleotide, influencing the reliability of each base call.
+
+---
 
 # Q&A
 - **Any questions or clarifications?**
